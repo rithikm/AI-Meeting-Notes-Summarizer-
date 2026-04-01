@@ -1,6 +1,6 @@
 # AI-Meeting-Notes-Summarizer-
 
-**Objective**
+<ins>**Objective**</ins>
 
 The objective of the project is to develop a Agentic System that converts short meeting audio
 recordings into structured notes. The final product is a web based application which the user
