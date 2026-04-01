@@ -1,0 +1,70 @@
+<!--Refrences-->
+<!--Drag and Drop Image Uploader : https://www.youtube.com/watch?v=5Fws9daTtIs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title displayed on browser tabs -->
+    <title>AI Meeting Notes Summarizer</title>
+    <!-- Link to the external CSS stylesheet stored in /static/css/style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Main heading of the application -->
+    <h1>AI Meeting Notetaker Summarizer</h1>
+    <!--  
+        Hero section containing the drag-and-drop or click-to-upload UI  
+        The entire area acts as a file uploader through the <label> wrapping.
+    -->
+    <div class="hero">
+        <label for="audio-file" id="drop-area">
+            <!--  
+                Hidden file input that accepts audio formats.
+                Triggered by clicking the drag-drop box.
+            -->
+            <input type="file" accept=".mp3,.wav,.m4a" id="audio-file" hidden>
+            <!--  
+                The visible UI section showing the drag-drop area.
+                Contains an icon and instructions for the user.
+            -->
+            <div id="file-view">
+                <img src="{{ url_for('static', filename='images/icon.png') }}">
+                <!-- Instruction text to prompt the user once webpage is accessed -->
+                <p>Drag & Drop or Click to Upload Audio</p>
+                <!-- Allowed  audio file types information displayed on the webpage -->
+                <span>Accepted formats: MP3, WAV, M4A</span>
+            </div>
+        </label>
+    </div>
+
+    <!--  
+        Hidden button that appears after a file is selected.  
+        Once clicked, it sends the audio to the Flask API backend to be processed.
+    -->
+    <button id="start-btn" style="display:none;">Begin Processing Audio File</button>
+
+    <div id="result" class="result-box" style="display:none;">
+        <!-- Transcription section -->
+        <h3>Transcription</h3>
+        <pre id="transcript"></pre>
+        <!--Summary Section extracted from the audio file transcript-->
+        <h3>Summary</h3>
+        <pre id="summary"></pre>
+        <!--Decisions extracted from the audio file transcript-->
+        <h3>Decisions</h3>
+        <pre id="decisions"></pre>
+        <!--Action Items extracted from the audio file transcript-->
+        <h3>Action Items</h3>
+        <pre id="actions"></pre>
+    </div>
+    <!--  
+        JavaScript that controls the upload behavior, drag-drop logic,
+        button display, and POST request to the Flask API backend.
+    -->
+    <script src="{{ url_for('static', filename='js/audio.js') }}"></script>
+</body>
+</html>
+
+
+
